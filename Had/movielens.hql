@@ -1,0 +1,38 @@
+CREATE EXTERNAL TABLE ratings (
+  userid INT, 
+  movieid INT,
+  rating INT, 
+  tstamp STRING
+) ROW FORMAT DELIMITED
+FIELDS TERMINATED BY '#'
+STORED AS TEXTFILE
+LOCATION '/tmp/sandbox/ratings.t';
+
+CREATE EXTERNAL TABLE movies (
+  movieid INT, 
+  title STRING,
+  genres ARRAY<STRING>
+) ROW FORMAT DELIMITED
+FIELDS TERMINATED BY '#'
+COLLECTION ITEMS TERMINATED BY "|"
+STORED AS TEXTFILE
+LOCATION '/tmp/sandbox/movies.t';
+
+CREATE EXTERNAL TABLE users (
+  userid INT, 
+  gender STRING, 
+  age INT,
+  occupation INT,
+  zipcode STRING
+) ROW FORMAT DELIMITED
+FIELDS TERMINATED BY '#'
+STORED AS TEXTFILE
+LOCATION '/tmp/sandbox/users.t';
+
+CREATE EXTERNAL TABLE occupations (
+  id INT,
+  occupation STRING
+) ROW FORMAT DELIMITED
+FIELDS TERMINATED BY '#'
+STORED AS TEXTFILE
+LOCATION '/tmp/sandbox/occupations.t';
